@@ -2,6 +2,9 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#40c3ff</color>
     <color name="colorBtnMain">#6A3352</color>
+    <color name="colorExpense">#daa90100</color>
+    <color name="colorIncome">#4353F2</color>
+    <color name="colorDisplay">#a7a7a7</color>
 </resources>

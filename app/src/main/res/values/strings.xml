@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FinanceOS</string>
+    <string name="title_activity_expense">ExpenceActivity</string>
+    <string name="title_activity_income">IncomeActivity</string>
 </resources>
