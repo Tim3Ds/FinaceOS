@@ -6,15 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="comtim3ds.github.financeos.ExpenseActivity"
-    tools:showIn="@layout/activity_expense">
+    tools:context="comtim3ds.github.financeos.ItemActivity"
+    tools:showIn="@layout/activity_item">
 
-    <TextView
-        android:id="@+id/expense_list"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_item_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Default text"
         />
-    
 
 </LinearLayout>

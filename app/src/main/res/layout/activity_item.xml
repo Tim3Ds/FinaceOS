@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
-    tools:context="comtim3ds.github.financeos.IncomeActivity">
+    tools:context="comtim3ds.github.financeos.ItemActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -21,10 +21,10 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_income" />
+    <include layout="@layout/content_itemList" />
 
     <Button
-        android:id="@+id/dtn_add_income"
+        android:id="@+id/dtn_add_item"
         android:layout_width="48dp"
         android:layout_height="49dp"
         android:layout_gravity="bottom|end"
