@@ -13,8 +13,12 @@ import android.widget.TextView;
 
 public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ItemViewHolder>{
     private Context adapterContext;
-    public ItemListAdapter(Context context){
+
+    private int itemCount;
+
+    public ItemListAdapter(Context context, int count){
         this.adapterContext = context;
+        itemCount = count;
     }
 
     @Override
@@ -31,7 +35,7 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ItemVi
 
     @Override
     public int getItemCount(){
-        return 0;
+        return itemCount;
     }
 
     class ItemViewHolder extends RecyclerView.ViewHolder{

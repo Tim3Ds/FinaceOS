@@ -8,11 +8,11 @@ import android.provider.BaseColumns;
 
 public class financeOSContract{
     public static final class financeOSEntry implements BaseColumns{
-        public static final String TABLE_NAME = "financeOS";
+        public static final String TABLE_NAME = "finance_item";
         public static final String COLUMN_Type = "type";
-        public static final String COLUMN_Item_Name = "itemName";
-        public static final String COLUMN_Item_Value = "itemValue";
-        public static final String COLUMN_Expected_Date = "expectedDate";
+        public static final String COLUMN_Item_Name = "item_name";
+        public static final String COLUMN_Item_Value = "item_value";
+        public static final String COLUMN_Expected_Date = "expected_date";
     }
 }
 

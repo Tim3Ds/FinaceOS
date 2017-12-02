@@ -19,13 +19,12 @@ public class financeOSDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        final String SQL_CREATE_financeOS_TABLE = "CREATE TABLE " +
-                financeOSEntry.TABLE_NAME + " (" +
-                financeOSEntry._ID + " INTIGER PRIMARY KEY AUTOINCREMENT," +
+        final String SQL_CREATE_financeOS_TABLE = "CREATE TABLE " + financeOSEntry.TABLE_NAME + " (" +
+                financeOSEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 financeOSEntry.COLUMN_Type + " TEXT NOT NULL, " +
                 financeOSEntry.COLUMN_Item_Name + " TEXT NOT NULL, " +
                 financeOSEntry.COLUMN_Item_Value + " INTEGER NOT NULL, " +
-                financeOSEntry.COLUMN_Expected_Date + " TIMESTAMP DEFAULT" +
+                financeOSEntry.COLUMN_Expected_Date + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
                 ");";
     
         db.execSQL(SQL_CREATE_financeOS_TABLE);

@@ -8,16 +8,19 @@
     <TextView
         android:id="@+id/list_item_name"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="default name"/>
 
     <TextView
         android:id="@+id/list_item_value"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="0"/>
 
     <TextView
         android:id="@+id/list_item_dueDate"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="00/00"/>
 
 </LinearLayout>
