@@ -1,26 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="50dp"
     android:orientation="horizontal"
+    android:clickable="true"
+    android:background="@drawable/ic_launcher_background"
     >
 
     <TextView
         android:id="@+id/list_item_name"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="default name"/>
+        android:layout_height="match_parent"
+        android:gravity="start|center"
+        android:textSize="26sp"
+        android:text="Default name"/>
 
     <TextView
         android:id="@+id/list_item_value"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"/>
+        android:layout_height="match_parent"
+        android:gravity="end|center"
+        android:textSize="26sp"
+        android:text="0.00"
+        />
 
     <TextView
         android:id="@+id/list_item_dueDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="end|top"
+        android:textSize="8sp"
         android:text="00/00"/>
 
 </LinearLayout>

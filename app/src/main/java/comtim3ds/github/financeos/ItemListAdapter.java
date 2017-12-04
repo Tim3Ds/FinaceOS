@@ -1,11 +1,16 @@
 package comtim3ds.github.financeos;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import java.sql.Date;
+
+import comtim3ds.github.financeos.data.financeOSContract;
 
 /**
  * Created by TinMa on 11/30/2017.
@@ -14,11 +19,20 @@ import android.widget.TextView;
 public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ItemViewHolder>{
     private Context adapterContext;
 
-    private int itemCount;
+    private Cursor result;
 
-    public ItemListAdapter(Context context, int count){
+    public ItemListAdapter(Context context, Cursor results){
         this.adapterContext = context;
-        itemCount = count;
+        this.result = results;
+    }
+
+    public void swapCursor(Cursor newCursor){
+        if(result != null){
+            result.close();
+        }
+        if(newCursor != null){
+            this.notifyDataSetChanged();
+        }
     }
 
     @Override
@@ -30,12 +44,22 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ItemVi
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position){
+        if(!result.moveToPosition(position))
+            return;
+        Long id = result.getLong(result.getColumnIndex(financeOSContract.financeOSEntry._ID));
+        String item_name =  result.getString(result.getColumnIndex(financeOSContract.financeOSEntry.COLUMN_Item_Name));
+        double item_value = result.getDouble(result.getColumnIndex(financeOSContract.financeOSEntry.COLUMN_Item_Value));
+        String item_due = result.getString(result.getColumnIndex(financeOSContract.financeOSEntry.COLUMN_Expected_Date));
 
+        holder.itemView.setTag(id);
+        holder.nameTextView.setText(item_name);
+        holder.valueTextView.setText(String.valueOf(item_value));
+        holder.dueDateTextView.setText(item_due);
     }
 
     @Override
     public int getItemCount(){
-        return itemCount;
+        return result.getCount();
     }
 
     class ItemViewHolder extends RecyclerView.ViewHolder{

@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:gravity="end"
             android:padding="10dp"
-            android:text="Default text"
+            android:text="$0.00"
             android:textAlignment="textEnd"
             android:textColor="@color/colorExpense"
             android:textSize="30sp" />
@@ -50,7 +50,7 @@
             android:gravity="end"
             android:textSize="30sp"
             android:textColor="@color/colorIncome"
-            android:text="Default text"
+            android:text="$0.00"
             />
 
         <TextView
@@ -68,29 +68,30 @@
             android:gravity="end"
             android:textSize="30sp"
             android:textColor="@color/colorIncome"
-            android:text="Default text"
+            android:text="$0.00"
             />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/btn_layout"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
         android:layout_margin="20dp"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true">
 
         <Button
             android:id="@+id/btn_goToExpenses"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:text="Expense List"
             />
         <Button
             android:id="@+id/btn_goToIncome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:text="Income List"
             />
 

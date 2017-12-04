@@ -1,10 +1,15 @@
 package comtim3ds.github.financeos;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import comtim3ds.github.financeos.data.financeOSContract;
+import comtim3ds.github.financeos.data.financeOSDbHelper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Cursor expenseResults = getItems("Expense");
+        Cursor incomeReults = getItems("Income");
 
 
 
@@ -44,5 +51,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+    private Cursor getItems(String type){
+        financeOSDbHelper dbHelper = new financeOSDbHelper(this);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        return db.query(
+                financeOSContract.financeOSEntry.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                financeOSContract.financeOSEntry.COLUMN_Expected_Date
+        );
     }
 }

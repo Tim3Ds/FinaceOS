@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="comtim3ds.github.financeos.ItemActivity"
     tools:showIn="@layout/activity_item">
 
     <android.support.v7.widget.RecyclerView

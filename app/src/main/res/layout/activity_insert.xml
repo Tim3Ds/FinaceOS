@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,8 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_insert_display"
-        android:layout_margin="30dp"
-        android:text="Item Name"
+        android:layout_margin="20dp"
+        android:hint="Item Name"
         />
 
     <EditText
@@ -31,15 +30,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_insert_name"
-        android:layout_margin="30dp"
-        android:text="Value"
+        android:layout_margin="20dp"
+        android:hint="Value"
+        />
+
+    <EditText
+        android:id="@+id/et_insert_expectedDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_insert_value"
+        android:layout_margin="20dp"
+        android:hint="Due date"
         />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/btn_insertItem"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_margin="30dp"
-        android:layout_below="@+id/et_insert_value"
+        android:layout_below="@+id/et_insert_expectedDate"
+        android:layout_centerInParent="true"
         android:text="ADD"
         />
 

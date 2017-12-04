@@ -12,7 +12,7 @@ import comtim3ds.github.financeos.data.financeOSContract.*;
 
 public class financeOSDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "financeOS.db";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 6;
     public financeOSDbHelper(Context context){
         super(context, DATABASE_NAME, null, DB_VERSION);
     }
@@ -23,8 +23,8 @@ public class financeOSDbHelper extends SQLiteOpenHelper {
                 financeOSEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 financeOSEntry.COLUMN_Type + " TEXT NOT NULL, " +
                 financeOSEntry.COLUMN_Item_Name + " TEXT NOT NULL, " +
-                financeOSEntry.COLUMN_Item_Value + " INTEGER NOT NULL, " +
-                financeOSEntry.COLUMN_Expected_Date + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
+                financeOSEntry.COLUMN_Item_Value + " DECIMAL NOT NULL, " +
+                financeOSEntry.COLUMN_Expected_Date + " TEXT NOT NULL" +
                 ");";
     
         db.execSQL(SQL_CREATE_financeOS_TABLE);
