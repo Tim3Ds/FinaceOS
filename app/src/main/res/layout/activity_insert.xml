@@ -22,6 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_insert_display"
         android:layout_margin="20dp"
+        android:maxLines="1"
+        android:inputType="text"
         android:hint="Item Name"
         />
 
@@ -31,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_insert_name"
         android:layout_margin="20dp"
+        android:inputType="numberDecimal"
         android:hint="Value"
         />
 
@@ -40,7 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_insert_value"
         android:layout_margin="20dp"
-        android:hint="Due date"
+        android:inputType="number"
+        android:hint="Day Of Month 1-30"
         />
 
     <Button

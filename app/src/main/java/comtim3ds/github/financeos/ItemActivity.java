@@ -50,7 +50,7 @@ public class ItemActivity extends AppCompatActivity {
         // link adapter to recycler view
         itemRecyclerView.setAdapter(listAdapter);
 
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(1, ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
                 return false;
@@ -64,7 +64,7 @@ public class ItemActivity extends AppCompatActivity {
 
                 listAdapter.swapCursor(getItems(TYPE));
             }
-        });
+        }).attachToRecyclerView(itemRecyclerView);
 
 
         Button fab = (Button)findViewById(R.id.dtn_add_item);
@@ -87,12 +87,14 @@ public class ItemActivity extends AppCompatActivity {
 
     private Cursor getItems(String type){
         financeOSDbHelper dbHelper = new financeOSDbHelper(this);
-        db = dbHelper.getReadableDatabase();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String selection = financeOSContract.financeOSEntry.COLUMN_Type + " =?";
+        String[] args = { type };
         return db.query(
                 financeOSContract.financeOSEntry.TABLE_NAME,
                 null,
-                null,
-                null,
+                selection,
+                args,
                 null,
                 null,
                 null

@@ -26,11 +26,10 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ItemVi
         this.result = results;
     }
 
-    public void swapCursor(Cursor newCursor){
-        if(result != null){
-            result.close();
-        }
-        if(newCursor != null){
+    public void swapCursor(Cursor newResult){
+        if(result != null){ result.close(); }
+        result = newResult;
+        if(newResult != null){
             this.notifyDataSetChanged();
         }
     }
