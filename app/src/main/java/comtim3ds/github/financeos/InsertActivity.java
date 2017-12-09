@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +31,7 @@ public class InsertActivity extends AppCompatActivity {
     TextView insertHeader;
     EditText item_name;
     EditText item_value;
-    EditText item_dueDate;
+    Spinner item_dueDate;
     SQLiteDatabase db;
 
     // error logging
@@ -51,14 +52,16 @@ public class InsertActivity extends AppCompatActivity {
 
         item_value  = this.findViewById(R.id.et_insert_value);
 
-        item_dueDate = this.findViewById(R.id.et_insert_expectedDate);
-        item_dueDate.setFilters(new InputFilter[]{ new InputFilterMinMax(1,30)});
+        item_dueDate = this.findViewById(R.id.sp_select_expectedDate);
 
         Button btn_addItem = findViewById(R.id.btn_insertItem);
         btn_addItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addToItemList(v, TYPE);
+                Intent BackToList = new Intent(InsertActivity.this, ItemActivity.class);
+                BackToList.putExtra("Type", TYPE);
+                startActivity(BackToList);
                 finish();
             }
         });
@@ -75,10 +78,16 @@ public class InsertActivity extends AppCompatActivity {
         } catch (NumberFormatException ex){
             Log.e(LOG_TAG, "Failed to parse Double value to number: " + ex.getMessage());
         }
-        Context context = getApplicationContext();
-        Toast.makeText(context,type + " " + item_name.getText().toString() + " " + newItemValue + " "+item_dueDate.toString(), Toast.LENGTH_SHORT).show();
 
-        insert_item(type, item_name.getText().toString(), newItemValue, item_dueDate.toString());
+        Context context = getApplicationContext();
+
+        long result = insert_item(type, item_name.getText().toString(), newItemValue, item_dueDate.getSelectedItem().toString());
+
+        if(true){
+            Toast.makeText(context, "Item Add Success" + Long.toString(result), Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(context, "Item Add Fail", Toast.LENGTH_LONG).show();
+        };
 
     }
 
@@ -96,33 +105,5 @@ public class InsertActivity extends AppCompatActivity {
         return db.insert(financeOSContract.financeOSEntry.TABLE_NAME, null, cv);
     }
 
-    public class InputFilterMinMax implements InputFilter {
-
-        private int min, max;
-
-        public InputFilterMinMax(int min, int max) {
-            this.min = min;
-            this.max = max;
-        }
-
-        public InputFilterMinMax(String min, String max) {
-            this.min = Integer.parseInt(min);
-            this.max = Integer.parseInt(max);
-        }
-
-        @Override
-        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-            try {
-                int input = Integer.parseInt(dest.toString() + source.toString());
-                if (isInRange(min, max, input))
-                    return null;
-            } catch (NumberFormatException nfe) { }
-            return "";
-        }
-
-        private boolean isInRange(int a, int b, int c) {
-            return b > a ? c >= a && c <= b : c >= b && c <= a;
-        }
-    }
 
 }

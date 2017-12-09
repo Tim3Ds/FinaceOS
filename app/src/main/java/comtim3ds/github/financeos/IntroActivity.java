@@ -29,7 +29,7 @@ public class IntroActivity extends AppCompatActivity {
                 Intent startMain = new Intent(context, destination);
 
                 startActivity(startMain);
-
+                finish();
             }
         });
     }

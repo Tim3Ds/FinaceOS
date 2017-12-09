@@ -36,23 +36,34 @@
         android:inputType="numberDecimal"
         android:hint="Value"
         />
-
-    <EditText
-        android:id="@+id/et_insert_expectedDate"
+    <LinearLayout
+        android:id="@+id/linear_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/et_insert_value"
-        android:layout_margin="20dp"
-        android:inputType="number"
-        android:hint="Day Of Month 1-30"
-        />
+        android:orientation="horizontal"
+        android:layout_margin="30dp"
+        android:layout_below="@+id/et_insert_value">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Day Of Month:"
+            />
+
+        <Spinner
+            android:id="@+id/sp_select_expectedDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/DaysOfMonth"
+            />
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/btn_insertItem"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_margin="30dp"
-        android:layout_below="@+id/et_insert_expectedDate"
+        android:layout_below="@+id/linear_input"
         android:layout_centerInParent="true"
         android:text="ADD"
         />
