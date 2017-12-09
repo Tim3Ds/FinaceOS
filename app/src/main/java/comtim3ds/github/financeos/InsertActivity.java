@@ -83,8 +83,8 @@ public class InsertActivity extends AppCompatActivity {
 
         long result = insert_item(type, item_name.getText().toString(), newItemValue, item_dueDate.getSelectedItem().toString());
 
-        if(true){
-            Toast.makeText(context, "Item Add Success" + Long.toString(result), Toast.LENGTH_LONG).show();
+        if(result>0){
+            Toast.makeText(context, "Item Add Success", Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(context, "Item Add Fail", Toast.LENGTH_LONG).show();
         };

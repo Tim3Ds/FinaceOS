@@ -1,35 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:orientation="horizontal"
-    android:clickable="true"
-    android:background="@drawable/ic_launcher_background"
+    android:orientation="vertical"
     >
 
-    <TextView
-        android:id="@+id/list_item_name"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/view_background"
+        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="start|center"
-        android:textSize="26sp"
-        android:text="Default name"/>
+        android:background="@color/colorExpense"
+        >
 
-    <TextView
-        android:id="@+id/list_item_value"
-        android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/delete_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="end|center"
+            android:src="@drawable/"
+            />
+
+        <TextView
+            android:id="@+id/delete_text"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/delete_icon"
+            android:gravity="end|center"
+            android:textSize="26sp"
+            android:text="delete"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/view_foreground"
+        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="end|center"
-        android:textSize="26sp"
-        android:text="0.00"
-        />
+        android:background="@drawable/ic_launcher_background"
+        >
 
-    <TextView
-        android:id="@+id/list_item_dueDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="end|top"
-        android:textSize="8sp"
-        android:text="00/00"/>
+        <TextView
+            android:id="@+id/list_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="start|center"
+            android:textSize="26sp"
+            android:text="Default name"/>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/list_item_value"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="end|center"
+            android:layout_marginRight="8sp"
+            android:layout_toLeftOf="@+id/list_item_dueDate"
+            android:textSize="26sp"
+            android:text="0.00"
+            />
+
+        <TextView
+            android:id="@+id/list_item_dueDate"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="end|center"
+            android:textSize="26sp"
+            android:text="00/00"/>
+
+    </RelativeLayout>
+</FrameLayout>

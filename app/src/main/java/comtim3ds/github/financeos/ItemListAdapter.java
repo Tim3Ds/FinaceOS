@@ -52,7 +52,7 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ItemVi
 
         holder.itemView.setTag(id);
         holder.nameTextView.setText(item_name);
-        holder.valueTextView.setText(String.valueOf(item_value));
+        holder.valueTextView.setText("$"+String.valueOf(item_value));
         holder.dueDateTextView.setText(item_due);
     }
 
