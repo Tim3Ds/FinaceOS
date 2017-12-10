@@ -26,16 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Expense = findViewById(R.id.tv_total_Expenses);
-        Income = findViewById(R.id.tv_total_Income);
-        Over_Short = findViewById(R.id.tv_over_short);
-
-        double totalExpences = getSumItems("Expense");
-        double totalIncome = getSumItems("Income");
-
-        Expense.setText('$'+Double.toString(totalExpences));
-        Income.setText('$'+Double.toString(totalIncome));
-        Over_Short.setText('$'+Double.toString(totalIncome-totalExpences));
+        setScreenOS();
 
         goToExpenseList = findViewById(R.id.btn_goToExpenses);
         goToExpenseList.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +48,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setScreenOS();
+    }
+
+
+
+    private void setScreenOS(){
+        Expense = findViewById(R.id.tv_total_Expenses);
+        Income = findViewById(R.id.tv_total_Income);
+        Over_Short = findViewById(R.id.tv_over_short);
+
+        double totalExpences = getSumItems("Expense");
+        double totalIncome = getSumItems("Income");
+
+        Expense.setText('$'+Double.toString(totalExpences));
+        Income.setText('$'+Double.toString(totalIncome));
+        Over_Short.setText('$'+Double.toString(totalIncome-totalExpences));
     }
     private double getSumItems(String type){
         financeOSDbHelper dbHelper = new financeOSDbHelper(this);

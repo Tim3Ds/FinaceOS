@@ -5,7 +5,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Canvas;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.SwipeDismissBehavior;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ButtonBarLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -51,32 +54,64 @@ public class ItemActivity extends AppCompatActivity {
         // link adapter to recycler view
         itemRecyclerView.setAdapter(listAdapter);
 
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(1, ItemTouchHelper.LEFT) {
+        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT ) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
                 return false;
             }
 
             @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                long id = (long)viewHolder.itemView.getTag();
+            public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
+                if (viewHolder != null) {
+                    final View foregroundView = ((ItemListAdapter.ItemViewHolder) viewHolder).viewForeground;
+                    final View backgroundEditView = ((ItemListAdapter.ItemViewHolder) viewHolder).viewBackgroundEdit;
 
+                    getDefaultUIUtil().onSelected(foregroundView);
+                    getDefaultUIUtil().onSelected(backgroundEditView);
+                }
+            }
+
+            @Override
+            public void onChildDrawOver(Canvas c, RecyclerView recyclerView,RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+                final View foregroundView = ((ItemListAdapter.ItemViewHolder) viewHolder).viewForeground;
+                final View backgroundEditView = ((ItemListAdapter.ItemViewHolder) viewHolder).viewBackgroundEdit;
+                getDefaultUIUtil().onDrawOver(c, recyclerView, foregroundView, dX, dY,
+                        actionState, isCurrentlyActive);
+                getDefaultUIUtil().onDrawOver(c, recyclerView, backgroundEditView, dX, dY,
+                        actionState, isCurrentlyActive);
+            }
+
+            @Override
+            public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+                final View foregroundView = ((ItemListAdapter.ItemViewHolder) viewHolder).viewForeground;
+                final View backgroundEditView = ((ItemListAdapter.ItemViewHolder) viewHolder).viewBackgroundEdit;
+                getDefaultUIUtil().clearView(foregroundView);
+                getDefaultUIUtil().clearView(backgroundEditView);
+            }
+
+            @Override
+            public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+                final View foregroundView = ((ItemListAdapter.ItemViewHolder) viewHolder).viewForeground;
+                final View backgroundEditView = ((ItemListAdapter.ItemViewHolder) viewHolder).viewBackgroundEdit;
+
+                getDefaultUIUtil().onDraw(c, recyclerView, foregroundView, dX, dY,
+                        actionState, isCurrentlyActive);
+                getDefaultUIUtil().onDraw(c, recyclerView, backgroundEditView, dX, dY,
+                        actionState, isCurrentlyActive);
+            }
+
+            @Override
+            public void onSwiped(final RecyclerView.ViewHolder viewHolder, int direction) {
+                final Long id = (long)viewHolder.itemView.getTag();
                 removeItem(id);
-
                 listAdapter.swapCursor(getItems(TYPE));
             }
-            @Override
-            public void onChildDraw(Canvas c,
-                                    RecyclerView rv,
-                                    RecyclerView.ViewHolder rvVH,
-                                    float dX,
-                                    float dY,
-                                    int actionState,
-                                    boolean isActive){
 
-            }
+        };
 
-        }).attachToRecyclerView(itemRecyclerView);
+        // attaching the touch helper to recycler view
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(itemRecyclerView);
+
 
 
         Button fab = (Button)findViewById(R.id.dtn_add_item);

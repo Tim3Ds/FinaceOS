@@ -2,10 +2,12 @@ package comtim3ds.github.financeos;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.support.v7.widget.ButtonBarLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.sql.Date;
@@ -66,6 +68,7 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ItemVi
         TextView nameTextView;
         TextView valueTextView;
         TextView dueDateTextView;
+        RelativeLayout viewBackgroundDelete, viewBackgroundEdit, viewForeground;
 
         /**
          * @param itemView The view inflated
@@ -76,6 +79,9 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ItemVi
             nameTextView = itemView.findViewById(R.id.list_item_name);
             valueTextView = itemView.findViewById(R.id.list_item_value);
             dueDateTextView = itemView.findViewById(R.id.list_item_dueDate);
+            viewBackgroundDelete = itemView.findViewById(R.id.view_background_delete);
+            viewBackgroundEdit = itemView.findViewById(R.id.view_background_edit);
+            viewForeground = itemView.findViewById(R.id.view_foreground);
         }
     }
 }

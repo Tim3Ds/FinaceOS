@@ -7,4 +7,7 @@
     <color name="colorExpense">#daa90100</color>
     <color name="colorIncome">#4353F2</color>
     <color name="colorDisplay">#a7a7a7</color>
+    <color name="colorEdit">#7fd172</color>
+    <color name="colorBTNFilter">#6478eaed</color>
+
 </resources>

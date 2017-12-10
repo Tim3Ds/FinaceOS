@@ -6,29 +6,58 @@
     >
 
     <RelativeLayout
-        android:id="@+id/view_background"
+        android:id="@+id/view_background_delete"
         xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorExpense"
         >
 
-        <ImageView
-            android:id="@+id/delete_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:gravity="end|center"
-            android:src="@drawable/"
-            />
 
         <TextView
             android:id="@+id/delete_text"
-            android:layout_width="70dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toLeftOf="@id/delete_icon"
-            android:gravity="end|center"
+            android:gravity="center_vertical|center"
             android:textSize="26sp"
-            android:text="delete"/>
+            android:text="DELETE"/>
+
+        <ImageView
+            android:id="@+id/delete_icon"
+            android:layout_width="36dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:gravity="end|center"
+            android:src="@drawable/trash"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/view_background_edit"
+        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorEdit"
+        >
+
+        <ImageView
+            android:id="@+id/edit_icon"
+            android:layout_width="36dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:gravity="start|center"
+            android:src="@drawable/edit"
+            />
+
+        <TextView
+            android:id="@+id/edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/edit_icon"
+            android:gravity="center_vertical|center"
+            android:layout_marginLeft="10sp"
+            android:textSize="26sp"
+            android:text="EDIT ITEM"/>
 
     </RelativeLayout>
 
@@ -36,7 +65,7 @@
         android:id="@+id/view_foreground"
         xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/ic_launcher_background"
+        android:background="@drawable/item_background"
         >
 
         <TextView
