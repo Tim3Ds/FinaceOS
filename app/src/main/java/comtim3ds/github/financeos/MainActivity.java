@@ -3,6 +3,7 @@ package comtim3ds.github.financeos;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -68,7 +69,13 @@ public class MainActivity extends AppCompatActivity {
 
         Expense.setText('$'+Double.toString(totalExpences));
         Income.setText('$'+Double.toString(totalIncome));
-        Over_Short.setText('$'+Double.toString(totalIncome-totalExpences));
+        double total = totalIncome-totalExpences;
+        if(total<0){
+            Over_Short.setTextColor(Color.parseColor("#daa90100"));
+        }else{
+            Over_Short.setTextColor(Color.GREEN);
+        }
+        Over_Short.setText('$'+Double.toString(Math.abs(total)));
     }
     private double getSumItems(String type){
         financeOSDbHelper dbHelper = new financeOSDbHelper(this);
